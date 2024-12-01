@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="png" href="basket.png">
+    <title>Exotic Fruit</title>
+</head>
+<style>
+    h2 {
+        margin-top: 40px;
+        color:#8f5572;
+        font-size: 40px;
+        margin-left:20px;
+        }
+    .header{
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:5px;
+        background:#dadad6;
+        box-shadow: var(--box-shadow);
+    }
+    .dark-theme {
+        background-color: #222222;
+        color: #ffffff;
+    }
+    .light-theme {
+        background-color: #ffffff;
+        color: #000000;
+    }
+    .dark-theme header{
+        background-color: #0b0b0b;
+    }
+    .logo-dark {
+        display: none;
+        width: 35px;
+        padding: 8px;
+        border-radius: 50px;
+        box-shadow: 0 0 10px #e28605;
+    }
+    .logo-dark:hover{
+        cursor: pointer;
+    }
+    .logo-light {
+        display: inline;
+        width: 40px;
+        box-shadow: 0 0 10px #e28605;
+        padding: 8px;
+        border-radius: 50px;
+        background-color: #f1f1f1;
+    }
+    .logo-light:hover{
+        cursor: pointer;
+    }
+    .light-theme .logo-dark {
+        display: none;
+    }
+    .light-theme .logo-light {
+        display: inline;
+    }
+    .dark-theme .logo-dark {
+        display: inline;
+    }
+    .dark-theme .logo-light {
+        display: none;
+    }
+    .btn{
+    font-size: 17px;
+    display: inline-block;
+    padding: 7px 10px;
+    border-radius: 1px;
+    border: 10px solid var(--orange);
+    color: var(--orange);
+    background: none;
+    cursor: pointer;
+  }
+  .activities .box-container {
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .activities .box-container .box {
+    height: 320px;
+    width: 250px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    border-radius: 10px;
+    outline: 0.1rem solid rgba(0, 0, 0, 0.1);
+    outline-offset: -1rem;
+    background-color: #ffffff;
+  }
+  .activities .box-container .box img{
+    height: 100px;
+  }
+  
+  .activities .box-container .box:hover img{
+    transform: scale(1.1);
+  }
+  .activities .box-container .box h3{
+    font-size: 25px;
+    color: var(--black);
+  }
+  .box-container .box p{
+    font-size: 17px;
+    font-weight: bold;
+    color: #000000;
+   }
+   #btn-1{
+    margin-top: 7px;
+    border-radius:8px;
+    background-color: #21c1f6;
+    color: #fff;
+    border:none;
+   }
+   #font-color{
+    color:#000000;
+   }
+   .dark-theme .activities .box-container .box{
+    box-shadow: 0 .6rem 1.5rem #e28605;
+  }
+  .dark-theme .activities .box-container .box .text-color{
+    color: #000000;
+  }
+
+
+  .game-demo{
+    padding-bottom: 20px;
+    margin: 50px auto;
+    width: 85%;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 20px;
+}
+.dark-theme .game-demo{
+    box-shadow: white 0px 2px 8px 0px;
+
+}
+
+.game-demo h1{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 40px;
+    color: #f7a636;
+}
+.eligibility-check{
+    padding: 5px;
+    font-size: 20px;
+    height: 50px;
+    width: 30%;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.dark-theme .eligibility-check{
+    box-shadow: white 0px 6px 24px 0px, white 0px 0px 0px 1px;
+}
+#btn-eligible{
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #87ceea;
+
+}
+#age{
+    font-size: 16px;
+}
+.games{
+    margin: auto;
+    height: auto;
+    width: 80%;
+    border: 1px solid white;
+   
+}
+.dark-theme .games{
+    border: none
+}
+#game-submit{
+    font-size: 15px;
+    padding: 8px;
+    background-color: #87ceea;
+    border-radius: 10px;
+}
+#result1 {
+    font-size: 20px;
+}
+#result2 {
+    font-size: 20px;
+}
+#result3 {
+    font-size: 20px;
+}
+#result4 {
+    font-size: 20px;
+}
+#signal {
+    margin: 10px auto;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.games input{
+    padding: 8px;
+    border-radius: 10px;
+    
+}
+.game-card{
+    text-align: center;
+    padding: 10px;
+    margin: 40px auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 50%;
+    border-radius: 10px;
+}
+.dark-theme .game-card{
+    box-shadow: #e28605 0px 5px 15px;
+}
+.resized-image {
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover; 
+    border: 2px solid #ccc; 
+    border-radius: 10px; 
+}
+
+/* Mobile screens */
+@media screen and (max-width: 600px) {
+    .header {
+        font-size: 22px; 
+        padding: 10px;
+    }
+    .activities .box-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .activities .box-container .box {
+        width: 95%;
+        margin: 10px 0;
+        padding: 1rem;
+    }
+    .game-card {
+        width: 95%;
+    }
+    .logo-dark, .logo-light {
+        width: 25px; 
+    }
+    .resized-image {
+        width: 120px; 
+        height: 120px;
+    }
+    .game-card h2 {
+        font-size: 18px;
+    }
+    #game-submit {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+/* Tablet screens */
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    .header {
+        font-size: 28px; 
+        padding: 10px;
+    }
+    .activities .box-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .activities .box-container .box {
+        width: 48%;
+        margin: 10px 0;
+    }
+    .game-card {
+        width: 90%;
+    }
+    .logo-dark, .logo-light {
+        width: 30px; 
+    }
+    .resized-image {
+        width: 150px; 
+        height: 150px;
+    }
+}
+
+/*Large Tablets */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .header {
+        font-size: 32px; 
+        padding: 15px;
+    }
+    .activities .box-container .box {
+        width: 30%; 
+    }
+    .game-card {
+        width: 75%;
+    }
+    .logo-dark, .logo-light {
+        width: 35px;
+    }
+    .resized-image {
+        width: 180px; 
+        height: 180px;
+    }
+}
+
+/* Desktop screens */
+@media screen and (min-width: 993px) {
+    .header {
+        font-size: 36px; 
+        padding: 20px;
+    }
+    .activities .box-container .box {
+        width: 22%; 
+        margin: 10px;
+    }
+    .game-card {
+        width: 60%; 
+    }
+    .logo-dark, .logo-light {
+        width: 50px; 
+    }
+    .resized-image {
+        width: 200px; 
+        height: 200px;
+    }
+}
+
+</style>
+</head>
+
+    <body id="body" class="light-theme">
+        <header class="header">
+            <h2>Exotic Fruit</h2>
+            <img src="night-mode.png" alt="dark mode" class="logo-dark" id="dark-logo" onclick="toggleTheme()" />
+            <img src="light.png" alt="light mode" class="logo-light" id="light-logo" onclick="toggleTheme()" />
+        </header>
+
+    <section class="activities">
+    <h1 class="heading">Our <span>Activities</span></h1>
+        <div class="box-container" class="game-demo" >
+            <div class="box" class="eligibility-check" >
+                <img src="card-games.png" alt="">
+                <h3 id="font-color">Fruit Games</h3>
+                <p class="text-color">Amazing Games for Kids! Ready to have a blast? Welcome & fun facts together...!✨</p>
+                <label for="name" class="text-color" id="label"><b>Enter Your Name:</b></label>
+                <input type="text" id="name" placeholder="Type here...">
+                <button class="btn" id="btn-1" onclick="checkName()">Submit</button>
+            </div>
+
+            <div class=" box-container eligibility-check games" id="games" style="display: none;">
+
+                <div class="game-card" id="game1">
+                    <h2>Count Alphabets...</h2>
+                    <input type="text" id="textInput" placeholder="Type Any Fruit Name Here">
+                    <button onclick="countAlphabets()" id="game-submit">Submit</button>
+                    <p id="result1"></p>
+                    <button onclick="resetAlphabetsGame()" id="game-submit">Clear</button>
+                </div>
+                
+
+                <div class="game-card" id="game2">
+                    <h2>Count Words...</h2>
+                    <input type="text" id="sentenceInput" placeholder="Type Words Related to Fruit">
+                    <button onclick="countWords()" id="game-submit">Submit</button>
+                    <p id="result2"></p>
+                    <button onclick="resetWordsGame()" id="game-submit">Clear</button>
+                </div>
+                
+                <div class="game-card" id="gameFruit">
+                    <h2>Identify the Fruit...</h2>
+                    <div id="fruit-image-container">
+                        <img id="fruit-image" alt="Random Fruit" data-name="apple" class="resized-image" src="apple.png">
+                    </div>
+                    <button onclick="chooseFruit('Apple')">Apple</button>
+                    <button onclick="chooseFruit('Banana')">Banana</button>
+                    <button onclick="chooseFruit('Orange')">Orange</button>
+                    <p id="resultFruit"></p>
+                    <button onclick="resetFruitGame()" id="game-submit">Clear</button>
+                </div>
+            </div>
+        </div> 
+        
+    </section>
+</body>
+<script>
+    function toggleTheme() {
+        const body = document.getElementById('body');
+        if (body.classList.contains('dark-theme')) {
+            body.classList.replace('dark-theme', 'light-theme');
+        } else {
+            body.classList.replace('light-theme', 'dark-theme');
+        }
+    }
+
+
+
+   function checkName() {
+    const name = document.getElementById('name').value.trim();
+    if (name) {
+        alert(`Welcome, ${name} ! Get Ready To Play Fruit Games.🤩`);
+        document.getElementById('games').style.display = 'block';
+        initializeTrafficSignal();
+    } else {
+        alert('Please Enter Valid Name To Play Fruit Games.');
+    }
+}
+
+
+
+function countAlphabets() {
+    const text = document.getElementById('textInput').value;
+    const alphabetsCount = text.replace(/[^a-zA-Z]/g, '').length;
+
+    if (alphabetsCount > 0) {
+        document.getElementById('result1').innerText = `The input contains ${alphabetsCount} alphabets. 🤩`;
+    } else {
+        document.getElementById('result1').innerText = 'No alphabets found in the input! 😥';
+    }
+}
+function resetAlphabetsGame() {
+    document.getElementById('textInput').value = '';
+    document.getElementById('result1').innerText = '';
+}
+
+
+
+function countWords() {
+    const sentence = document.getElementById('sentenceInput').value.trim();
+    if (sentence) {
+        const wordsCount = sentence.split(/\s+/).length;
+        document.getElementById('result2').innerText = `The input contains ${wordsCount} words. 🤩`;
+    } else {
+        document.getElementById('result2').innerText = 'No words found in the input! 😥';
+    }
+}
+
+function resetWordsGame() {
+    document.getElementById('sentenceInput').value = '';
+    document.getElementById('result2').innerText = '';
+}
+
+      
+
+
+
+    const fruits = [
+        { name: 'Apple', image: 'apple.png' },
+        { name: 'Banana', image: 'banana.png' },
+        { name: 'Orange', image: 'orange.png' }
+    ];
+
+    function initializeFruitGame() {
+        const randomFruit = fruits[Math.floor(Math.random() * fruits.length)];
+        document.getElementById('fruit-image').src = randomFruit.image;
+        document.getElementById('fruit-image').dataset.name = randomFruit.name;
+    }
+
+    function chooseFruit(name) {
+        const fruitName = document.getElementById('fruit-image').dataset.name;
+
+        if (name === fruitName) {
+            document.getElementById('resultFruit').innerText = `Correct! The fruit is ${fruitName}.🤩`;
+        } else {
+            document.getElementById('resultFruit').innerText = `Wrong!😥 The fruit is ${fruitName}.`;
+        }
+    }
+    function resetFruitGame() {
+        initializeFruitGame();
+        document.getElementById('resultFruit').innerText = '';
+    }
+      
+
+
+</script>
+</html>
